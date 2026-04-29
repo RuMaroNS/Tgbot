@@ -1,0 +1,21 @@
+name: AI Bot Run
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  bot_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - name: Start
+        run: node index.js
+        env:
+          # Слева - имя для кода, Справа - имя из Settings -> Secrets
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
