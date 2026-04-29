@@ -12,7 +12,7 @@ async function generateImage(prompt) {
         const response = await axios.post(
             'https://openrouter.ai/api/v1/images/generations',
             {
-                model: 'black-forest-labs/flux-schnell',
+                model: 'google/gemini-3.1-flash-image-preview',
                 prompt: prompt
             },
             {
